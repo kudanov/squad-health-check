@@ -1,0 +1,29 @@
+{
+  "name": "squad-health-check",
+  "version": "1.0.0",
+  "description": "spotify squad health check model",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.15.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kudanov/squad-health-check.git"
+  },
+  "keywords": [
+    "spotify",
+    "squad",
+    "health"
+  ],
+  "author": "Mikhail Kudanov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kudanov/squad-health-check/issues"
+  },
+  "homepage": "https://github.com/kudanov/squad-health-check#readme"
+}
