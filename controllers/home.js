@@ -7,3 +7,7 @@ exports.index = (req, res) => {
     title: 'Home'
   });
 };
+
+exports.postHome = (req, res) => {
+  res.redirect('/');
+};
