@@ -8,16 +8,19 @@ const errorHandler = require('errorhandler');
 const dotenv = require('dotenv');
 const path = require('path');
 const sass = require('node-sass-middleware');
+const mongoose = require('mongoose');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.load({ path: '.env.example' });
+dotenv.load({ path: '.env' });
+// dotenv.load({ path: '.env.example' });
 
 /**
  * Controllers (route handlers).
  */
 const homeController = require('./controllers/home');
+const newSquadAnswerController = require('./controllers/new-squad-answer');
 
 /**
  * Create Express server.
@@ -52,6 +55,8 @@ app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }))
  * Primary app routes
  */
 app.get('/', homeController.index);
+app.get('/new-squad-answer', newSquadAnswerController.getNewSquadAnswer);
+app.post('/new-squad-answer', newSquadAnswerController.postNewSquadAnswer);
 
 /**
  * Error Handler.
