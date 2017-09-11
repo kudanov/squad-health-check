@@ -2,16 +2,21 @@ extends layout
 
 block content
   h1 New squad answer
+  br
   form.form-horizontal(method='POST')
     .form-group
       label(class='col-sm-1 control-label', for='name') Squad
-      .col-sm-3
+      .col-sm-7
         input.form-control(type='text', name='name', id='name', autofocus=true)
     .squad-answer-row
       .form-group
         label(class='col-sm-1 control-label', for='area') Area
-        .col-sm-3
-          input.form-control(type='text', name='area', id='area')
+        .col-sm-7
+          select.form-control(name='area', id='area')
+            each area in pageData.areaDescription
+              option(value=area.id)
+                = area.description
+      .form-group
         label(class='col-sm-1 control-label', for='good') Good
         .col-sm-1
           input.form-control(type='text', name='good', id='good')
@@ -23,12 +28,16 @@ block content
           input.form-control(type='text', name='bad', id='bad')
         label(class='col-sm-1 control-label', for='trend') Trend
         .col-sm-1
-          input.form-control(type='text', name='trend', id='trend')
+          select.form-control(name='trend', id='trend')
+            - 
+            each area in pageData.trendValues
+              option(value=area)
+                = area
       .form-group
         label(class='col-sm-1 control-label', for='issues') Issues
-        .col-sm-11
+        .col-sm-7
           textarea.form-control(name='issues', id='issues', rows='7')
       .form-group
-        .col-sm-offset-11
+        .col-sm-offset-1.col-sm-8
           button.btn.btn-primary(type='submit')          
             | Submit
