@@ -21,5 +21,15 @@ exports.getNewSquadAnswer = (req, res) => {
 };
   
 exports.postNewSquadAnswer = (req, res) => {
+  req.assert('area', 'Area cannot be empty').notEmpty();
+  req.assert('name', 'Name cannot be empty').notEmpty();
+
+  var errors = req.getValidationResult();
+
+  if (!errors.isEmpty()) {
+    req.flash('errors', errors.toString());
+    return res.redirect('/new-squad-answer');
+  }
+
   res.redirect('/');
 };

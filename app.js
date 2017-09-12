@@ -9,6 +9,9 @@ const dotenv = require('dotenv');
 const path = require('path');
 const sass = require('node-sass-middleware');
 const mongoose = require('mongoose');
+const expressValidator = require('express-validator');
+var session = require('express-session');
+const flash = require('express-flash');
 
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
@@ -50,6 +53,13 @@ app.use(sass({
   dest: path.join(__dirname, 'public')
 }));
 app.use(express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: process.env.SESSION_SECRET
+}));
+app.use(expressValidator());
+app.use(flash());
 
 /**
  * Primary app routes
