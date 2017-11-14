@@ -4,15 +4,18 @@ block styles
   //- link(rel='stylesheet', href='https://cdn3.devexpress.com/jslib/17.1.7/css/dx.spa.css')
   link(rel='stylesheet', href='https://cdn3.devexpress.com/jslib/17.1.7/css/dx.common.css')
   link(rel='stylesheet', href='https://cdn3.devexpress.com/jslib/17.1.7/css/dx.light.css')
-  
+  //- link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
 block content
   h1 New squad answer
   br
   form.form-horizontal(method='POST')
     .form-group
-      label(class='col-sm-1 control-label', for='name') Squad
-      .col-sm-7
-        input.form-control(type='text', name='name', id='name', placeholder='Enter the name of a squad', autofocus, required)
+      label(class='col-sm-1 control-label', for='squadName') Squad
+      .col-sm-4
+        input.form-control(type='text', name='squadName', id='squadName', placeholder='Enter the name of a squad', autofocus, required)
+      label(class='col-sm-1 control-label', for='squadDate') Date
+      .col-sm-2
+        input.form-control(type='date', name='squadDate', id='squadDate', autofocus, required)
     .squad-answer-row
       .form-group
         label(class='col-sm-1 control-label', for='area') Area
@@ -47,7 +50,10 @@ block content
           button.btn.btn-primary(type='submit')          
             | Submit
   br
-  .table(id='gridContainer')
+  .table-striped(id='gridContainer')
+  
+  script.
+    var pageData = !{JSON.stringify(pageData)}
 
 block scripts
   script(src='/js/lib/dx.web.js')
