@@ -25,17 +25,16 @@ exports.getNewSquadAnswer = (req, res) => {
  * POST /new-squad-answer
  */
 exports.postNewSquadAnswer = (req, res, next) => {
-  // const errors = [];
-
-  // if (validator.isEmpty(req.body.name)) errors.push({ msg: 'Please enter the name of a squad' });
-  // if (validator.isEmpty(req.body.area)) errors.push({ msg: 'Please enter the name of the area' });
-
-  // if (errors.length) {
-  //   req.flash('errors', errors);
-  //   return res.redirect('/new-squad-answer');
-  // }
-
-  //res.redirect('/');
   console.log(req.body);
-  res.json(req.body);
+  const errors = [];
+
+  if (!req.body.name) errors.push({ msg: 'Please enter the name of a squad' });
+  if (!req.body.area) errors.push({ msg: 'Please enter the name of the area' });
+
+  if (errors.length) {
+    req.flash('errors', errors);
+    return res.redirect('/new-squad-answer');
+  }
+
+  res.redirect('/');
 };
