@@ -1,4 +1,5 @@
 const Constants = require("../src/constans");
+const validator = require('validator');
 
 /**
  * GET /new-squad-answer
@@ -20,16 +21,21 @@ exports.getNewSquadAnswer = (req, res) => {
   });
 };
   
-exports.postNewSquadAnswer = (req, res) => {
-  req.assert('area', 'Area cannot be empty').notEmpty();
-  req.assert('name', 'Name cannot be empty').notEmpty();
+/**
+ * POST /new-squad-answer
+ */
+exports.postNewSquadAnswer = (req, res, next) => {
+  // const errors = [];
 
-  var errors = req.getValidationResult();
+  // if (validator.isEmpty(req.body.name)) errors.push({ msg: 'Please enter the name of a squad' });
+  // if (validator.isEmpty(req.body.area)) errors.push({ msg: 'Please enter the name of the area' });
 
-  if (!errors.isEmpty()) {
-    req.flash('errors', errors.toString());
-    return res.redirect('/new-squad-answer');
-  }
+  // if (errors.length) {
+  //   req.flash('errors', errors);
+  //   return res.redirect('/new-squad-answer');
+  // }
 
-  res.redirect('/');
+  //res.redirect('/');
+  console.log(req.body);
+  res.json(req.body);
 };
