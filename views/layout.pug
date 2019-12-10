@@ -6,6 +6,7 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     title #{title} Squad health check model
     link(rel='stylesheet', href='/css/main.css')
+    link(rel='stylesheet', href='/css/lib/bootstrap.min.css')
     block styles
 
   body
@@ -15,8 +16,9 @@ html
     
     include partials/footer
   
-  script(src='/js/lib/jquery-3.1.1.min.js')
-  script(src='/js/lib/bootstrap.min.js')
+  script(src='/js/lib/jquery-3.4.1.min.js')
+  //- script(src='/js/lib/bootstrap.min.js')
+  script(src='/js/lib/bootstrap.bundle.min.js')
   script(src='/js/main.js')
   block scripts
   

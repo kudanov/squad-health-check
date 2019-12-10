@@ -1,9 +1,10 @@
 if messages.errors
-  .alert.alert-danger.fade.show
-    button.close(type='button', data-dismiss='alert')
-      i.far.fa-times-circle
+  .alert.alert-danger.alert-dismissible.fade.show(role='alert')
     for error in messages.errors
       div= error.msg
+    button.close(type='button', data-dismiss='alert',aria-label="Close")
+      span(aria-hidden='true')!='&times;'
+    
 if messages.info
   .alert.alert-info.fade.show
     button.close(type='button', data-dismiss='alert')

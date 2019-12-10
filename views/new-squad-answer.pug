@@ -2,51 +2,92 @@ extends layout
 
 block styles
   //- link(rel='stylesheet', href='https://cdn3.devexpress.com/jslib/17.1.7/css/dx.spa.css')
-  link(rel='stylesheet', href='https://cdn3.devexpress.com/jslib/17.1.7/css/dx.common.css')
-  link(rel='stylesheet', href='https://cdn3.devexpress.com/jslib/17.1.7/css/dx.light.css')
+  //- link(rel='stylesheet', href='https://cdn3.devexpress.com/jslib/17.1.7/css/dx.common.css')
+  //- link(rel='stylesheet', href='https://cdn3.devexpress.com/jslib/17.1.7/css/dx.light.css')
   //- link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css", integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb", crossorigin="anonymous")
 block content
   h1 New squad answer
   br
-  form.form-horizontal(method='POST')
-    .form-group
-      label(class='col-sm-1 control-label', for='squadName') Squad
-      .col-sm-4
+    //- form.form-horizontal(method='POST')
+    //-     .form-row.form-group
+    //-       label(class='col-1 col-form-label', for='squadName') Squad
+    //-       .col-sm-4
+    //-         input.form-control(type='text', name='squadName', id='squadName', placeholder='Enter the name of a squad', autofocus, required)
+    //-       label(class='col-1 col-form-label', for='squadDate') Date
+    //-       .col-sm-2
+    //-         input.form-control(type='date', name='squadDate', id='squadDate', autofocus, required)
+    //-     .squad-answer-row
+    //-       .form-row.form-group
+    //-         label(class='col-1 col-form-label', for='area') Area
+    //-         .col-sm-7
+    //-           select.form-control(name='area', id='area', required)
+    //-             each area in pageData.areaDescription
+    //-               option(value=area.id)
+    //-                 = area.description
+    //-       .form-row.form-group
+    //-         label(class='col-1 col-form-label', for='good') Good
+    //-         .col-1
+    //-           input.form-control(type='number', name='good', id='good', required)
+    //-         label(class='col-1 col-form-label', for='meh') Meh...
+    //-         .col-1
+    //-           input.form-control(type='number', name='meh', id='meh', required)
+    //-         label(class='col-1 col-form-label', for='bad') Bad
+    //-         .col-1
+    //-           input.form-control(type='number', name='bad', id='bad', required)
+    //-         label(class='col-1 col-form-label', for='trend') Trend
+    //-         .col-1
+    //-           select.form-control(name='trend', id='trend')
+    //-             - 
+    //-             each trend in pageData.trendValues
+    //-               option(value=trend.id)
+    //-                 = trend.description
+    //-       .form-row.form-group
+    //-         label(class='col-1 col-form-label', for='issues') Issues
+    //-         .col-sm-7
+    //-           textarea.form-control(name='issues', id='issues', rows='7', placeholder='Enter the issues that squad see')
+    //-       .form-row
+    //-         .col-sm-offset-1.col-sm-8
+    //-           button.btn.btn-primary(type='submit')          
+    //-             | Submit
+  
+  form(method='POST')
+    .row
+      .col-5.mb-3
+        label(for='squadName') Squad
         input.form-control(type='text', name='squadName', id='squadName', placeholder='Enter the name of a squad', autofocus, required)
-      label(class='col-sm-1 control-label', for='squadDate') Date
-      .col-sm-2
-        input.form-control(type='date', name='squadDate', id='squadDate', autofocus, required)
+      .col-3.mb-3
+        label(for='squadDate') Date
+        input.form-control(type='date', name='squadDate', id='squadDate', required)
     .squad-answer-row
-      .form-group
-        label(class='col-sm-1 control-label', for='area') Area
-        .col-sm-7
+      .row
+        .col-8.mb-3
+          label(for='area') Area
           select.form-control(name='area', id='area', required)
             each area in pageData.areaDescription
               option(value=area.id)
                 = area.description
-      .form-group
-        label(class='col-sm-1 control-label', for='good') Good
-        .col-sm-1
-          input.form-control(type='number', name='good', id='good', required)
-        label(class='col-sm-1 control-label', for='meh') Meh...
-        .col-sm-1
-          input.form-control(type='number', name='meh', id='meh', required)
-        label(class='col-sm-1 control-label', for='bad') Bad
-        .col-sm-1
-          input.form-control(type='number', name='bad', id='bad', required)
-        label(class='col-sm-1 control-label', for='trend') Trend
-        .col-sm-1
+      .row
+        .col-2.mb-3
+          label(for='good') Good
+          input.form-control(type='number', name='good', id='good', min=0, required)
+        .col-2.mb-3
+          label(for='meh') Meh...
+          input.form-control(type='number', name='meh', id='meh', min=0, required)
+        .col-2.mb-3
+          label(for='bad') Bad
+          input.form-control(type='number', name='bad', id='bad', min=0, required)
+        .col-2.mb-3
+          label(for='trend') Trend
           select.form-control(name='trend', id='trend')
-            - 
             each trend in pageData.trendValues
               option(value=trend.id)
                 = trend.description
-      .form-group
-        label(class='col-sm-1 control-label', for='issues') Issues
-        .col-sm-7
+      .row
+        .col-8.mb-3
+          label(for='issues') Issues
           textarea.form-control(name='issues', id='issues', rows='7', placeholder='Enter the issues that squad see')
-      .form-group
-        .col-sm-offset-1.col-sm-8
+      .row
+        .col-offset-1.col-8
           button.btn.btn-primary(type='submit')          
             | Submit
   br
@@ -56,5 +97,5 @@ block content
     var pageData = !{JSON.stringify(pageData)}
 
 block scripts
-  script(src='/js/lib/dx.web.js')
+  //- script(src='/js/lib/dx.web.js')
   script(src='/js/new-squad-answer.js')
