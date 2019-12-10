@@ -9,7 +9,6 @@ const dotenv = require('dotenv');
 const path = require('path');
 const sass = require('node-sass-middleware');
 const mongoose = require('mongoose');
-const expressValidator = require('express-validator');
 var session = require('express-session');
 const flash = require('express-flash');
 
@@ -61,7 +60,6 @@ app.use(session({
   secret: process.env.SESSION_SECRET
 }));
 
-app.use(expressValidator());
 app.use(flash());
 
 /**
