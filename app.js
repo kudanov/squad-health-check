@@ -15,8 +15,8 @@ const flash = require('express-flash');
 /**
  * Load environment variables from .env file, where API keys and passwords are configured.
  */
-dotenv.load({ path: '.env' });
-// dotenv.load({ path: '.env.example' });
+dotenv.config({ path: '.env' });
+// dotenv.config({ path: '.env.example' });
 
 /**
  * Controllers (route handlers).
@@ -34,7 +34,8 @@ const app = express();
  */
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 mongoose.connection.on('error', (err) => {
   console.error(err);
