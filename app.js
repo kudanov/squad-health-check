@@ -35,7 +35,7 @@ const app = express();
  */
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI || process.env.MONGOLAB_URI, {
-  useMongoClient:true
+  useNewUrlParser: true
 });
 mongoose.connection.on('error', (err) => {
   console.error(err);
@@ -60,6 +60,7 @@ app.use(session({
   saveUninitialized: true,
   secret: process.env.SESSION_SECRET
 }));
+
 app.use(expressValidator());
 app.use(flash());
 
