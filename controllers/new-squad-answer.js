@@ -12,7 +12,6 @@ exports.getNewSquadAnswer = (req, res) => {
     {id:3, description:"Area3"}, 
     {id:4, description:"Area4"}];
   
-  req.flash('errors', [{msg: 'I am flash!'}]);
   res.render('new-squad-answer', {
     pageData: {
       title: 'Add answer', 
