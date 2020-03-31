@@ -1,13 +1,15 @@
 var mongoose = require('mongoose');
 
 const squadAnswerSchema = new mongoose.Schema({
+  squad: String,
+  date: {type: Date, default: Date.now},
   areaId: String,
   good: Number,
   meh: Number,
   bad: Number,
   trend: Number,
   issues: String
-}, { timestamps: true });
+});
 
 
 const SquadAnswer = mongoose.model('SquadAnswer', squadAnswerSchema);
