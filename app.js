@@ -13,16 +13,16 @@ var session = require('express-session');
 const flash = require('express-flash');
 
 /**
- * Load environment variables from .env file, where API keys and passwords are configured.
- */
-dotenv.config({ path: '.env' });
-// dotenv.config({ path: '.env.example' });
-
-/**
  * Controllers (route handlers).
  */
 const homeController = require('./controllers/home');
 const newSquadAnswerController = require('./controllers/new-squad-answer');
+
+/**
+ * Load environment variables from .env file, where API keys and passwords are configured.
+ */
+dotenv.config({ path: '.env' });
+// dotenv.config({ path: '.env.example' });
 
 /**
  * Create Express server.

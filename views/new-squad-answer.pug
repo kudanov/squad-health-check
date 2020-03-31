@@ -20,6 +20,13 @@ block content
               option(value=area._id)
                 = area.title
       .row
+        .col-1.mb-3
+          .circle-base.awesome-circle
+        .col-3.mb-3(id='awesome_example')
+        .col-1.mb-3
+          .circle-base.crappy-circle
+        .col-3.mb-3(id='crappy_example')
+      .row
         .col-2.mb-3
           label(for='good') Good
           input.form-control(type='number', name='good', id='good', min=0, required)
