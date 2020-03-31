@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
 const areaSchema = new mongoose.Schema({
-  id: { type: Number, unique: true },
   title: String,
-  exampleOfCrappy: String,
-  exampleOfAwesome: String
+  exampleOfAwesome: String,
+  exampleOfCrappy: String
+  
 });
 
 

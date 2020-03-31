@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 const squadAnswerSchema = new mongoose.Schema({
-  areaId: Number,
+  areaId: String,
   good: Number,
   meh: Number,
   bad: Number,

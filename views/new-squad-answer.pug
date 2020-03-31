@@ -17,8 +17,8 @@ block content
           label(for='area') Area
           select.form-control(name='area', id='area', required)
             each area in pageData.areaDescription
-              option(value=area.id)
-                = area.description
+              option(value=area._id)
+                = area.title
       .row
         .col-2.mb-3
           label(for='good') Good
@@ -34,7 +34,7 @@ block content
           select.form-control(name='trend', id='trend')
             each trend in pageData.trendValues
               option(value=trend.id)
-                = trend.description
+                = trend.title
       .row
         .col-8.mb-3
           label(for='issues') Issues
