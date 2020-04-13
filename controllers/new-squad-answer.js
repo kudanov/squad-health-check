@@ -19,21 +19,15 @@ exports.getNewSquadAnswer = (req, res) => {
     title: default_area, 
     exampleOfCrappy: "crappy1", 
     exampleOfAwesome: "exampleOfAwesome1"});
-  
-  var query = AreaModel.find({title: default_area});
-  query.exec(function(err, result){
-    if(!err) {
-      if (!result){
-        area.save()
-          .then(doc => {console.log(doc)})
-          .catch(err => {console.error(err)});
-      } else {
-        console.log(result);
+
+  AreaModel.find({title: default_area})
+    .then(docs => {
+      console.log(docs)
+      if (!docs.length){
+        area.save().then().catch(err => {console.error(err)});
       }
-    } else {
-      console.error(err);
-    }
-  });
+    })
+    .catch(err => console.error(err));
 
   res.render('new-squad-answer', {
     pageData: {
