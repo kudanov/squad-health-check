@@ -1,41 +1,35 @@
 const Constants = require("../src/constans");
-const AreaModel = require("../models/Area.js");
+const Area = require("../models/Area");
 const validator = require('validator');
+
+function renderPage(res, areas) {
+  res.render('new-squad-answer', {
+    pageData: {
+      title: 'Add answer',
+      trendValues: Constants.TREND_VALUES,
+      areaDescription: areas
+    }
+  });
+}
 
 /**
  * GET /new-squad-answer
  * Page for adding new squad answer.
  */
 exports.getNewSquadAnswer = (req, res) => {
-  //TODO: get data from DB
-  var areas = [{id:1, description:"Area1"}, 
-    {id:2, description:"Area2"},
-    {id:3, description:"Area3"}, 
-    {id:4, description:"Area4"}];
-
-
-  const default_area = "Area1";
-  var area = new AreaModel({
-    title: default_area, 
-    exampleOfCrappy: "crappy1", 
-    exampleOfAwesome: "exampleOfAwesome1"});
-
-  AreaModel.find({title: default_area})
-    .then(docs => {
-      console.log(docs)
-      if (!docs.length){
-        area.save().then().catch(err => {console.error(err)});
+  //TODO: only for this user
+  Area.find()
+    .exec()
+    .then(dbAreas => {
+      if (dbAreas.length) {
+        renderPage(res, dbAreas);
+      } else {
+        Area.collection.insertMany(Constants.KNIBERG_AREA)
+          .then(createdAreas => renderPage(res, createdAreas.ops))
+          .catch(err => req.flash('errors', err));
       }
     })
-    .catch(err => console.error(err));
-
-  res.render('new-squad-answer', {
-    pageData: {
-      title: 'Add answer', 
-      trendValues:Constants.TREND_VALUES,
-      areaDescription:areas
-    }
-  });
+    .catch(err => req.flash('errors', err));
 };
   
 /**
@@ -54,4 +48,4 @@ exports.postNewSquadAnswer = (req, res, next) => {
   }
 
   res.redirect('/');
-};
+}
