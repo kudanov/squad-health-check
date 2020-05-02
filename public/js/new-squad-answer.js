@@ -5,7 +5,7 @@ var answers = [{
     meh: 2,
     bad: 1,
     trend: 0,
-    issues: 'More issues!'
+    issues: 'More issssssues!'
 }, {
     squad: 'Squad1',
     area: 'Area 3',
